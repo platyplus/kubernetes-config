@@ -5,7 +5,7 @@ metadata:
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: plmercereau@platyplus.io
+    email: admin@platyplus.io
     privateKeySecretRef:
       name: letsencrypt-staging
     http01: {}
@@ -20,7 +20,7 @@ spec:
     # The ACME server URL
     server: https://acme-v02.api.letsencrypt.org/directory
     # Email address used for ACME registration
-    email: plmercereau@platyplus.io
+    email: admin@platyplus.io
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
       name: letsencrypt-prod
