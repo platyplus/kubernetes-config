@@ -1,3 +1,5 @@
+https://akomljen.com/get-automatic-https-with-lets-encrypt-and-kubernetes-ingress/
+
 # install cluster
 
 # connect to cluster
