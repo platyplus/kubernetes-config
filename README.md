@@ -38,7 +38,21 @@ kubectl get svc -l app=nginx-ingress,component=controller -o=jsonpath='{$.items[
 kubectl apply -f issuer.yaml
 ```
 
-## Per app
+# Codefresh
+## Generate a token
+https://codefresh.io/docs/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token
+## Set the token as a Kubernetes secret
+https://codefresh.io/docs/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/
+```
+
+kubectl create secret <docker-registry-pull-secret> my-codefresh-registry --docker-server=r.cfcf.io --docker-username=<codefresh_username> --docker-password=<codefresh_token> --docker-email=<email>
+```
+## Add the pull secret to default kubernetes service account
+```
+kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "<docker-registry-pull-secret>"}]}'
+```
+
+# Simple app deployment
 ```
 cd echo-example
 kubectl apply -f ingress.yaml
