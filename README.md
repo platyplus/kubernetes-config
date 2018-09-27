@@ -16,7 +16,7 @@ kubectl -n kube-system get pods -l name=tiller
 
 # Ingress
 ```
-helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true --namespace ingress
+helm install --name nginx-ingress stable/nginx-ingress  --namespace ingress -f values-ingress.yaml
 ```
 
 # Cert manager
