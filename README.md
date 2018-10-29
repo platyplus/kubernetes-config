@@ -16,7 +16,7 @@ kubectl -n kube-system get pods -l name=tiller
 
 # Ingress
 ```
-helm install --name nginx-ingress stable/nginx-ingress  --namespace ingress -f values-ingress.yaml
+helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true --set tcp.2222="default/ssh-bridge:22" --namespace ingress
 ```
 
 # Cert manager
@@ -30,7 +30,7 @@ helm install --name cert-manager \
 
 # Get IP and change DNS
 ```
-kubectl get svc -l app=nginx-ingress,component=controller -o=jsonpath='{$.items[*].status.loadBalancer.ingress[].ip}'
+kubectl get svc --namespace ingress -l app=nginx-ingress,component=controller -o=jsonpath='{$.items[*].status.loadBalancer.ingress[].ip}'
 ```
 
 # Certificate Issuer
